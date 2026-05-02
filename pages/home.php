@@ -1,4 +1,5 @@
 <?php
+include 'koneksi.php';
 // Produk
 $produk = mysqli_query($conn, "SELECT * FROM produk ORDER BY id DESC LIMIT 3");
 
