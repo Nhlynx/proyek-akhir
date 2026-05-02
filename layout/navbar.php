@@ -1,4 +1,5 @@
 <?php
+include 'koneksi.php';
 $currentPage = $_GET['page'] ?? 'home';
 $sub  = $_GET['sub'] ?? null;
 $kategoriQuery = mysqli_query($conn, "SELECT DISTINCT kategori FROM produk");
@@ -66,7 +67,7 @@ $kategoriQuery = mysqli_query($conn, "SELECT DISTINCT kategori FROM produk");
         <!-- Right Icons -->
         <div class="hidden md:flex items-center space-x-3">
            <a href="index.php?page=login" class="bg-orange-500 text-white px-6 py-2.5 rounded-full font-semibold text-sm shadow-md hover:bg-orange-600 hover:scale-105 transition duration-200">
-            Login</a>
+            Admin Login</a>
         </div>
     </div>
 <script>
