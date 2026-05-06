@@ -29,7 +29,7 @@ switch ($page) {
         if ($sub == 'profil') {
             include 'pages/about-us/profil.php';
         } elseif ($sub == 'visi') {
-            include 'pages/about-us/visi.php';
+            include 'pages/about-us/visimisi.php';
         } elseif ($sub == 'sejarah') {
             include 'pages/about-us/sejarah.php';
         }

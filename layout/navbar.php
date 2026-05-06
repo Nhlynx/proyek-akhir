@@ -23,7 +23,7 @@ $kategoriQuery = mysqli_query($conn, "SELECT DISTINCT kategori FROM produk");
                 <div class="absolute top-full left-0 hidden group-hover:block bg-white text-black rounded shadow-lg w-40">
                     <a href="index.php?page=tentang&sub=profil" class="block px-4 py-2 hover:bg-gray-100 <?= $sub == 'profil' ? 'bg-gray-200' : '' ?> block px-4 py-2">Profil</a>
                     <a href="index.php?page=tentang&sub=sejarah" class="block px-4 py-2 hover:bg-gray-100 <?= $sub == 'sejarah' ? 'bg-gray-200' : '' ?> block px-4 py-2">Sejarah</a>
-                    <a href="index.php?page=tentang&sub=visi" class="block px-4 py-2 hover:bg-gray-100 <?= $sub == 'visi' ? 'bg-gray-200' : '' ?> block px-4 py-2">Visi Misi</a>
+                    <a href="index.php?page=tentang&sub=visi" class="block px-4 py-2 hover:bg-gray-100 <?= $sub == 'visi' ? 'bg-gray-200' : '' ?> block px-4 py-2">Visi & Misi</a>
                 </div>
             </div>
 
