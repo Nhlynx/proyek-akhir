@@ -1,4 +1,5 @@
 <?php
+session_start();
 include __DIR__ . '/../koneksi.php';
 
 if (isset($_POST['login'])) {
@@ -10,7 +11,6 @@ if (isset($_POST['login'])) {
 
     if ($user && password_verify($password, $user['password'])) {
         $_SESSION['user'] = $user;
-
         header("Location: /proyek-akhir/admin/dashboard.php");
         exit;
     } else {

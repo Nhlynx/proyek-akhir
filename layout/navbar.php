@@ -34,7 +34,7 @@ $kategoriQuery = mysqli_query($conn, "SELECT DISTINCT kategori FROM produk");
             <ul class="dropdown-menu">
             <?php while($kat = mysqli_fetch_assoc($kategoriQuery)) { ?>
             <li>
-                <a href="index.php?page=product&kategori=<?= $kat['kategori'] ?>" class="block px-4 py-2 hover:bg-gray-100">
+                <a href="index.php?page=produk&kategori=<?= $kat['kategori'] ?>" class="block px-4 py-2 hover:bg-gray-100">
                     <?= ucfirst(str_replace('-', ' ', $kat['kategori'])) ?>
                 </a>
             </li>
