@@ -62,7 +62,7 @@ $listData = $data;
                 Rp <?= number_format($heroData['harga']) ?>
             </p>
 
-            <a href="index.php?page=detail&id=<?= $heroData['id'] ?>"
+            <a href="index.php?page=detail_produk&id=<?= $heroData['id'] ?>"
                class="inline-block mt-4 bg-green-600 text-white px-5 py-2 rounded-lg">
                Lihat Detail
             </a>
@@ -102,7 +102,7 @@ $listData = $data;
             <p class="text-green-600 font-bold">
                 Rp <?= number_format($row['harga']) ?>
             </p>
-            <a href="index.php?page=detail&id=<?= $row['id'] ?>" class="text-green-600 text-sm font-semibold">
+            <a href="index.php?page=detail_produk&id=<?= $row['id'] ?>" class="text-green-600 text-sm font-semibold">
                Detail →
             </a>
         </div>
