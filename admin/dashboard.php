@@ -15,9 +15,7 @@ $queryArtikel = mysqli_query($conn, "SELECT COUNT(*) as total FROM artikel");
 $dataArtikel = mysqli_fetch_assoc($queryArtikel);
 $totalArtikel = $dataArtikel['total'];
 
-$queryUser = mysqli_query($conn, "SELECT COUNT(*) as total FROM users");
-$dataUser = mysqli_fetch_assoc($queryUser);
-$totalUser = $dataUser['total'];
+$totalKonten = $totalProduk + $totalArtikel;
 ?>
 <?php include '../layout/admin/header.php'; ?>
 <?php include '../layout/admin/sidebar.php'; ?>
@@ -42,8 +40,8 @@ $totalUser = $dataUser['total'];
         </div>
 
         <div class="bg-[#7AC6D2] text-white p-5 rounded-xl shadow hover:scale-105 transition">
-            <h3 class="text-lg">User</h3>
-            <p class="text-3xl font-bold"><?php echo $totalUser; ?></p>
+            <h3 class="text-lg">Total Konten</h3>
+            <p class="text-3xl font-bold"><?php echo $totalKonten; ?></p>
         </div>
     </div>
 </main>
