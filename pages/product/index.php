@@ -12,17 +12,9 @@ if ($kategori) {
     $where = "WHERE kategori = '$kategori_safe'";
 }
 
-$query = mysqli_query($conn, "
-    SELECT * FROM produk 
-    $where
-    ORDER BY id DESC
-    LIMIT $start, $limit
-");
+$query = mysqli_query($conn, "SELECT * FROM produk $where ORDER BY id DESC LIMIT $start, $limit");
 
-$total = mysqli_query($conn, "
-    SELECT COUNT(*) as total FROM produk 
-    $where
-");
+$total = mysqli_query($conn, "SELECT COUNT(*) as total FROM produk $where");
 
 $totalData = mysqli_fetch_assoc($total)['total'];
 $totalPage = ceil($totalData / $limit);
