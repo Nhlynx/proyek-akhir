@@ -10,6 +10,31 @@ $totalArtikel = mysqli_num_rows($data);
 
 <main class="flex-1 p-6 overflow-y-auto">
 
+    <!-- Toast Notifikasi -->
+    <?php if (isset($_GET['notif'])) :
+        $notifMap = [
+            'tambah' => ['bg' => 'bg-green-500', 'icon' => '✅', 'msg' => 'Artikel berhasil ditambahkan!'],
+            'edit'   => ['bg' => 'bg-blue-500',  'icon' => '✏️', 'msg' => 'Artikel berhasil diperbarui!'],
+            'hapus'  => ['bg' => 'bg-red-500',   'icon' => '🗑️', 'msg' => 'Artikel berhasil dihapus!'],
+        ];
+        $n = $notifMap[$_GET['notif']] ?? null;
+    ?>
+    <?php if ($n) : ?>
+    <div id="toast"
+         class="fixed top-6 right-6 z-50 flex items-center gap-3 <?= $n['bg'] ?> text-white px-5 py-3.5 rounded-2xl shadow-xl text-sm font-semibold transition-all duration-500">
+        <span><?= $n['icon'] ?></span>
+        <span><?= $n['msg'] ?></span>
+        <button onclick="document.getElementById('toast').remove()" class="ml-2 text-white/70 hover:text-white text-lg leading-none">×</button>
+    </div>
+    <script>
+        setTimeout(function() {
+            const t = document.getElementById('toast');
+            if (t) { t.style.opacity = '0'; t.style.transform = 'translateY(-10px)'; setTimeout(() => t.remove(), 500); }
+        }, 3500);
+    </script>
+    <?php endif; ?>
+    <?php endif; ?>
+
     <!-- Top Bar -->
     <div class="bg-white px-6 py-4 rounded-2xl shadow-sm mb-6 flex items-center justify-between">
         <div>
@@ -75,7 +100,6 @@ $totalArtikel = mysqli_num_rows($data);
                                     ✏️ Edit
                                 </a>
                                 <a href="hapus_artikel.php?id=<?= $row['id'] ?>"
-                                   onclick="return confirm('Yakin ingin menghapus artikel ini?')"
                                    class="inline-flex items-center gap-1 bg-red-500 hover:bg-red-600 text-white text-xs font-semibold px-3 py-1.5 rounded-lg transition">
                                     🗑️ Hapus
                                 </a>

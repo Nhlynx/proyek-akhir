@@ -23,7 +23,8 @@ if (isset($_POST['submit'])) {
     }
 
     mysqli_query($conn, "INSERT INTO artikel (judul, slug, isi, gambar, penulis) VALUES ('$judul', '$slug', '$isi', '$gambar', '$penulis')");
-    echo "<script> alert('Artikel berhasil ditambahkan!'); window.location='artikel.php'; </script>";
+    header("Location: artikel.php?notif=tambah");
+    exit;
 }
 ?>
 

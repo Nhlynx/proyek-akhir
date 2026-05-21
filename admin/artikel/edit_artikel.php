@@ -29,7 +29,8 @@ if (isset($_POST['submit'])) {
     }
 
     mysqli_query($conn, "UPDATE artikel SET judul='$judul', slug='$slug', isi='$isi', gambar='$gambar', penulis='$penulis' WHERE id='$id'");
-    echo "<script> alert('Artikel berhasil diupdate!'); window.location='artikel.php'; </script>";
+    header("Location: artikel.php?notif=edit");
+    exit;
 }
 ?>
 
