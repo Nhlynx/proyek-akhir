@@ -4,108 +4,167 @@ include '../../koneksi.php';
 include '../../layout/admin/header.php';
 include '../../layout/admin/sidebar.php';
 
-// fungsi slug
 function buatSlug($text) {
     $text = strtolower($text);
     $text = preg_replace('/[^a-z0-9]+/', '-', $text);
     return trim($text, '-');
 }
 
-// ambil id
-$id = $_GET['id'];
-
-// ambil data artikel
+$id   = $_GET['id'];
 $data = mysqli_query($conn, "SELECT * FROM artikel WHERE id='$id'");
-$row = mysqli_fetch_assoc($data);
+$row  = mysqli_fetch_assoc($data);
 
-// proses update
 if (isset($_POST['submit'])) {
-
-    $judul = $_POST['judul'];
-    $isi = $_POST['isi'];
+    $judul   = $_POST['judul'];
+    $isi     = $_POST['isi'];
     $penulis = $_POST['penulis'];
-    $slug = buatSlug($judul);
+    $slug    = buatSlug($judul);
 
-    // cek upload gambar
     if ($_FILES['gambar']['name'] != '') {
-
         $gambar = time() . '_' . $_FILES['gambar']['name'];
-        $tmp = $_FILES['gambar']['tmp_name'];
-
+        $tmp    = $_FILES['gambar']['tmp_name'];
         move_uploaded_file($tmp, "../../uploads/" . $gambar);
-
     } else {
         $gambar = $row['gambar'];
     }
 
-    mysqli_query($conn, "UPDATE artikel SET judul='$judul', slug='$slug', isi='$isi', gambar='$gambar', penulis='$penulis'
-        WHERE id='$id'");
-
+    mysqli_query($conn, "UPDATE artikel SET judul='$judul', slug='$slug', isi='$isi', gambar='$gambar', penulis='$penulis' WHERE id='$id'");
     echo "<script> alert('Artikel berhasil diupdate!'); window.location='artikel.php'; </script>";
 }
 ?>
 
-<main class="flex-1 p-6">
-    <!-- Header -->
-    <div class="bg-white p-4 rounded-xl shadow mb-6">
-        <h2 class="font-semibold text-lg">Edit Artikel</h2>
+<main class="flex-1 p-6 overflow-y-auto">
+
+    <!-- Top Bar -->
+    <div class="bg-white px-6 py-4 rounded-2xl shadow-sm mb-6 flex items-center justify-between">
+        <div>
+            <h2 class="font-bold text-gray-800 text-lg">Edit Artikel</h2>
+            <p class="text-gray-400 text-xs mt-0.5">Perbarui konten artikel</p>
+        </div>
+        <a href="artikel.php"
+           class="inline-flex items-center gap-2 border border-gray-200 text-gray-600 px-4 py-2 rounded-xl text-sm font-semibold hover:border-[#0f5c5c] hover:text-[#0f5c5c] transition">
+            ← Kembali
+        </a>
     </div>
 
-    <!-- Form Tengah -->
-    <div class="flex justify-center mt-6">
-        <div class="bg-white p-6 rounded-xl shadow w-full max-w-3xl">
+    <form method="POST" enctype="multipart/form-data">
+        <div class="grid md:grid-cols-3 gap-6">
 
-            <form method="POST" enctype="multipart/form-data" class="space-y-4">
+            <!-- Kolom Kiri: Editor Utama -->
+            <div class="md:col-span-2 space-y-5">
+
                 <!-- Judul -->
-                <div>
-                    <label class="block mb-1 text-sm font-medium">Judul</label>
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+                    <label class="block text-sm font-semibold text-gray-700 mb-1.5">
+                        Judul Artikel <span class="text-red-500">*</span>
+                    </label>
                     <input type="text" name="judul" required
-                           value="<?= $row['judul']; ?>"
-                           class="w-full border rounded-lg px-3 py-2">
+                           value="<?= htmlspecialchars($row['judul']) ?>"
+                           class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#0f5c5c]/30 focus:border-[#0f5c5c] transition">
+                    <p class="text-xs text-gray-400 mt-1.5">
+                        Slug saat ini: <span class="font-mono text-[#0f5c5c]">/<?= htmlspecialchars($row['slug']) ?></span>
+                        <span class="text-gray-300 ml-1">(otomatis diperbarui)</span>
+                    </p>
                 </div>
+
+                <!-- Isi Artikel -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+                    <label class="block text-sm font-semibold text-gray-700 mb-1.5">
+                        Isi Artikel <span class="text-red-500">*</span>
+                    </label>
+                    <textarea name="isi" id="editor"
+                              class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm"><?= htmlspecialchars($row['isi']) ?></textarea>
+                </div>
+
+            </div>
+
+            <!-- Kolom Kanan: Meta -->
+            <div class="space-y-5">
 
                 <!-- Penulis -->
-                <div>
-                    <label class="block mb-1 text-sm font-medium">Penulis</label>
-                    <input type="text" name="penulis" value="<?= $row['penulis']; ?>" class="w-full border rounded-lg px-3 py-2">
-                </div>
-
-                <!-- Isi -->
-                <div>
-                    <label class="block mb-1 text-sm font-medium">Isi Artikel</label>
-                    <textarea name="isi" id="editor" class="w-full border rounded-lg px-3 py-2"><?= $row['isi']; ?></textarea>
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+                    <label class="block text-sm font-semibold text-gray-700 mb-1.5">Penulis</label>
+                    <input type="text" name="penulis"
+                           value="<?= htmlspecialchars($row['penulis']) ?>"
+                           class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#0f5c5c]/30 focus:border-[#0f5c5c] transition">
                 </div>
 
                 <!-- Gambar -->
-                <div>
-                    <label class="block mb-1 text-sm font-medium">Gambar</label>
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+                    <label class="block text-sm font-semibold text-gray-700 mb-3">Gambar Artikel</label>
+
+                    <!-- Preview gambar saat ini -->
                     <?php if ($row['gambar']) : ?>
-                        <img src="../../uploads/<?= $row['gambar']; ?>"
-                             class="w-24 mb-2 rounded">
+                    <div class="mb-3">
+                        <img src="../../uploads/<?= htmlspecialchars($row['gambar']) ?>"
+                             id="previewImg"
+                             class="w-full h-36 object-cover rounded-xl border border-gray-100 mb-2">
+                        <p class="text-xs text-gray-400">
+                            📎 <?= htmlspecialchars($row['gambar']) ?>
+                        </p>
+                    </div>
                     <?php endif; ?>
-                    <input type="file" name="gambar" class="w-full border rounded-lg px-3 py-2 bg-white">
+
+                    <div class="border-2 border-dashed border-gray-200 rounded-xl p-4 text-center hover:border-[#0f5c5c] transition cursor-pointer"
+                         onclick="document.getElementById('inputGambar').click()">
+                        <p class="text-sm text-gray-400">🖼️ Klik untuk ganti gambar</p>
+                        <p class="text-xs text-gray-300 mt-1">Kosongkan jika tidak ingin mengganti</p>
+                        <input type="file" id="inputGambar" name="gambar" accept="image/*" class="hidden"
+                               onchange="gantiPreview(this)">
+                    </div>
+                    <p id="namaFile" class="text-xs text-gray-400 mt-1.5"></p>
                 </div>
 
-                <!-- Tombol -->
-                <div class="flex gap-3">
-                    <button type="submit" name="submit" class="bg-[#3A59D1] text-white px-5 py-2 rounded-lg hover:bg-[#2f47a8]">
-                        Update
-                    </button>
+                <!-- Info Artikel -->
+                <div class="bg-gray-50 rounded-2xl border border-gray-100 p-5">
+                    <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Info Artikel</p>
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-xs">
+                            <span class="text-gray-400">Dibuat</span>
+                            <span class="text-gray-600 font-medium"><?= date('d M Y', strtotime($row['created_at'])) ?></span>
+                        </div>
+                        <div class="flex justify-between text-xs">
+                            <span class="text-gray-400">ID Artikel</span>
+                            <span class="text-gray-600 font-mono">#<?= $row['id'] ?></span>
+                        </div>
+                    </div>
+                </div>
 
-                    <a href="artikel.php" class="bg-gray-300 px-5 py-2 rounded-lg hover:bg-gray-400">
-                        Kembali
+                <!-- Tombol Aksi -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 space-y-3">
+                    <button type="submit" name="submit"
+                            class="w-full bg-[#0f5c5c] text-white py-3 rounded-xl font-semibold text-sm hover:bg-[#0a4444] transition">
+                        Simpan Perubahan
+                    </button>
+                    <a href="artikel.php"
+                       class="block w-full text-center border border-gray-200 text-gray-600 py-3 rounded-xl font-semibold text-sm hover:bg-gray-50 transition">
+                        Batal
                     </a>
                 </div>
-            </form>
+
+            </div>
         </div>
-    </div>
+    </form>
+
 </main>
+
 <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
 <script>
 ClassicEditor
     .create(document.querySelector('#editor'))
-    .catch(error => {
-        console.error(error);
-    });
+    .catch(error => { console.error(error); });
+
+function gantiPreview(input) {
+    if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const img = document.getElementById('previewImg');
+            if (img) img.src = e.target.result;
+            document.getElementById('namaFile').textContent = '✔ ' + input.files[0].name;
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+}
 </script>
+
 <?php include '../../layout/admin/footer.php'; ?>
