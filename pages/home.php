@@ -7,10 +7,27 @@ $produk = mysqli_query($conn, "SELECT * FROM produk ORDER BY id DESC LIMIT 3");
 $artikel = mysqli_query($conn, "SELECT * FROM artikel ORDER BY id DESC LIMIT 2");
 ?>
 
+<!-- Animasi Scroll Reveal -->
+<style>
+.reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+</style>
+
 <!-- HERO SECTION -->
 <section class="py-12 bg-white">
     <div class="max-w-6xl mx-auto px-6">
-        <div class="bg-[#0f5c5c] rounded-3xl overflow-hidden shadow-xl">
+        <div class="bg-[#0f5c5c] rounded-3xl overflow-hidden shadow-xl reveal">
             <div class="flex flex-col md:flex-row items-center gap-0">
                 <!-- Teks -->
                 <div class="flex-1 px-10 py-14 text-white">
@@ -60,33 +77,33 @@ $artikel = mysqli_query($conn, "SELECT * FROM artikel ORDER BY id DESC LIMIT 2")
 <!-- KEUNGGULAN SECTION -->
 <section class="py-12 bg-gray-50">
     <div class="max-w-6xl mx-auto px-6">
-        <div class="text-center mb-10">
+        <div class="text-center mb-10 reveal">
             <h2 class="text-2xl md:text-3xl font-bold text-[#0f5c5c]">Mengapa Rumah Pangan Nusantara?</h2>
             <p class="text-gray-500 mt-2 text-sm">Lebih dari sekadar produk — sebuah gerakan ketahanan pangan</p>
         </div>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-5">
-            <div class="bg-white rounded-2xl p-6 text-center shadow-sm hover:shadow-md transition">
+            <div class="bg-white rounded-2xl p-6 text-center shadow-sm hover:shadow-md transition reveal reveal-delay-1">
                 <div class="w-12 h-12 bg-[#0f5c5c]/10 rounded-full flex items-center justify-center mx-auto mb-4">
                     <span class="text-2xl">🌿</span>
                 </div>
                 <h3 class="font-semibold text-gray-800 text-sm">100% Lokal</h3>
                 <p class="text-gray-500 text-xs mt-1">Bahan baku dari petani Indonesia</p>
             </div>
-            <div class="bg-white rounded-2xl p-6 text-center shadow-sm hover:shadow-md transition">
+            <div class="bg-white rounded-2xl p-6 text-center shadow-sm hover:shadow-md transition reveal reveal-delay-2">
                 <div class="w-12 h-12 bg-[#0f5c5c]/10 rounded-full flex items-center justify-center mx-auto mb-4">
                     <span class="text-2xl">💪</span>
                 </div>
                 <h3 class="font-semibold text-gray-800 text-sm">Kaya Protein</h3>
                 <p class="text-gray-500 text-xs mt-1">Sumber protein nabati terbaik</p>
             </div>
-            <div class="bg-white rounded-2xl p-6 text-center shadow-sm hover:shadow-md transition">
+            <div class="bg-white rounded-2xl p-6 text-center shadow-sm hover:shadow-md transition reveal reveal-delay-3">
                 <div class="w-12 h-12 bg-[#0f5c5c]/10 rounded-full flex items-center justify-center mx-auto mb-4">
                     <span class="text-2xl">📚</span>
                 </div>
                 <h3 class="font-semibold text-gray-800 text-sm">Edukasi & Pelatihan</h3>
                 <p class="text-gray-500 text-xs mt-1">Program untuk masyarakat mandiri</p>
             </div>
-            <div class="bg-white rounded-2xl p-6 text-center shadow-sm hover:shadow-md transition">
+            <div class="bg-white rounded-2xl p-6 text-center shadow-sm hover:shadow-md transition reveal reveal-delay-4">
                 <div class="w-12 h-12 bg-[#0f5c5c]/10 rounded-full flex items-center justify-center mx-auto mb-4">
                     <span class="text-2xl">🤝</span>
                 </div>
@@ -100,7 +117,7 @@ $artikel = mysqli_query($conn, "SELECT * FROM artikel ORDER BY id DESC LIMIT 2")
 <!-- PRODUK SECTION -->
 <section class="py-14 bg-white">
     <div class="max-w-6xl mx-auto px-6">
-        <div class="flex items-end justify-between mb-8">
+        <div class="flex items-end justify-between mb-8 reveal">
             <div>
                 <p class="text-[#0f5c5c] text-sm font-semibold uppercase tracking-widest mb-1">Koleksi Terbaru</p>
                 <h2 class="text-2xl md:text-3xl font-bold text-gray-800">Produk Unggulan</h2>
@@ -111,7 +128,7 @@ $artikel = mysqli_query($conn, "SELECT * FROM artikel ORDER BY id DESC LIMIT 2")
         </div>
         <div class="grid md:grid-cols-3 gap-6">
             <?php while ($row = mysqli_fetch_assoc($produk)) : ?>
-            <div class="bg-white rounded-2xl shadow hover:shadow-lg transition overflow-hidden border border-gray-100 group">
+            <div class="bg-white rounded-2xl shadow hover:shadow-lg transition overflow-hidden border border-gray-100 group reveal">
                 <div class="overflow-hidden h-48">
                     <img src="/proyek-akhir/uploads/<?= htmlspecialchars($row['gambar']); ?>"
                          alt="<?= htmlspecialchars($row['nama_produk']); ?>"
@@ -142,7 +159,7 @@ $artikel = mysqli_query($conn, "SELECT * FROM artikel ORDER BY id DESC LIMIT 2")
 <!-- ARTIKEL SECTION -->
 <section class="py-14 bg-gray-50">
     <div class="max-w-6xl mx-auto px-6">
-        <div class="flex items-end justify-between mb-8">
+        <div class="flex items-end justify-between mb-8 reveal">
             <div>
                 <p class="text-[#0f5c5c] text-sm font-semibold uppercase tracking-widest mb-1">Wawasan & Inspirasi</p>
                 <h2 class="text-2xl md:text-3xl font-bold text-gray-800">Artikel Terbaru</h2>
@@ -151,7 +168,7 @@ $artikel = mysqli_query($conn, "SELECT * FROM artikel ORDER BY id DESC LIMIT 2")
         <div class="grid md:grid-cols-2 gap-6">
             <?php while ($row = mysqli_fetch_assoc($artikel)) : ?>
             <a href="index.php?page=detail_artikel&slug=<?= $row['slug']; ?>"
-               class="bg-white rounded-2xl shadow hover:shadow-lg transition overflow-hidden flex gap-0 group border border-gray-100">
+               class="bg-white rounded-2xl shadow hover:shadow-lg transition overflow-hidden flex gap-0 group border border-gray-100 reveal">
                 <!-- Gambar -->
                 <div class="w-36 flex-shrink-0 overflow-hidden">
                     <img src="/proyek-akhir/uploads/<?= htmlspecialchars($row['gambar']); ?>"
@@ -184,7 +201,7 @@ $artikel = mysqli_query($conn, "SELECT * FROM artikel ORDER BY id DESC LIMIT 2")
     <div class="max-w-6xl mx-auto px-6">
         <div class="grid md:grid-cols-2 gap-8 items-stretch">
             <!-- TRAINING -->
-            <div class="bg-[#0f5c5c] text-white p-8 rounded-2xl flex flex-col justify-between shadow-lg">
+            <div class="bg-[#0f5c5c] text-white p-8 rounded-2xl flex flex-col justify-between shadow-lg reveal reveal-delay-1">
                 <div>
                     <span class="inline-block bg-white/20 text-white text-xs font-semibold px-3 py-1 rounded-full mb-5 tracking-widest uppercase">
                         Program Kami
@@ -215,7 +232,7 @@ $artikel = mysqli_query($conn, "SELECT * FROM artikel ORDER BY id DESC LIMIT 2")
             </div>
 
             <!-- MAP -->
-            <div class="rounded-2xl overflow-hidden shadow-lg border border-gray-100 min-h-[320px]">
+            <div class="rounded-2xl overflow-hidden shadow-lg border border-gray-100 min-h-[320px] reveal reveal-delay-2">
                 <div class="bg-[#0f5c5c] px-6 py-4">
                     <p class="text-white font-semibold text-sm">📍 Lokasi Kami</p>
                     <p class="text-white/70 text-xs mt-0.5">Edu Wisata Kacang Koro, Bogor</p>
@@ -233,14 +250,14 @@ $artikel = mysqli_query($conn, "SELECT * FROM artikel ORDER BY id DESC LIMIT 2")
 <!-- CTA SECTION -->
 <section class="py-14 bg-[#0f5c5c]">
     <div class="max-w-3xl mx-auto px-6 text-center">
-        <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">
+        <h2 class="text-2xl md:text-3xl font-bold text-white mb-4 reveal">
             Siap Bergabung Bersama Kami?
         </h2>
-        <p class="text-white/75 text-base mb-8 leading-relaxed">
+        <p class="text-white/75 text-base mb-8 leading-relaxed reveal reveal-delay-1">
             Jadilah bagian dari gerakan pangan lokal yang sehat dan berkelanjutan.
             Bersama kita tumbuh, bersama kita kuat.
         </p>
-        <div class="flex flex-wrap justify-center gap-4">
+        <div class="flex flex-wrap justify-center gap-4 reveal reveal-delay-2">
             <a href="?page=produk"
                class="inline-block bg-white text-[#0f5c5c] px-7 py-3 rounded-xl font-semibold hover:bg-gray-100 transition shadow">
                 Lihat Produk
@@ -252,3 +269,18 @@ $artikel = mysqli_query($conn, "SELECT * FROM artikel ORDER BY id DESC LIMIT 2")
         </div>
     </div>
 </section>
+
+<script>
+// Scroll Reveal dengan IntersectionObserver
+const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal').forEach(function(el) {
+    observer.observe(el);
+});
+</script>

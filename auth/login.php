@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 include __DIR__ . '/../koneksi.php';
 
 if (isset($_POST['login'])) {

@@ -16,7 +16,8 @@ if (isset($_POST['submit'])) {
     move_uploaded_file($tmp, "../../uploads/" . $gambar);
 
     mysqli_query($conn, "INSERT INTO produk (nama_produk, kategori, deskripsi, harga, stok, gambar) VALUES ('$nama', '$kategori', '$deskripsi', '$harga', '$stok', '$gambar')");
-    echo "<script> alert('Produk berhasil ditambahkan!'); window.location='produk.php'; </script>";
+    header("Location: produk.php?notif=tambah");
+    exit;
 }
 ?>
 

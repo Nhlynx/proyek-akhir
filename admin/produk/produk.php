@@ -10,6 +10,32 @@ $totalProduk = mysqli_num_rows($query);
 
 <main class="flex-1 p-6 overflow-y-auto">
 
+    <!-- Toast Notifikasi -->
+    <?php if (isset($_GET['notif'])) : ?>
+    <?php
+        $notifMap = [
+            'tambah' => ['bg' => 'bg-green-500',  'icon' => '✅', 'msg' => 'Produk berhasil ditambahkan!'],
+            'edit'   => ['bg' => 'bg-blue-500',   'icon' => '✏️', 'msg' => 'Produk berhasil diperbarui!'],
+            'hapus'  => ['bg' => 'bg-red-500',    'icon' => '🗑️', 'msg' => 'Produk berhasil dihapus!'],
+        ];
+        $n = $notifMap[$_GET['notif']] ?? null;
+    ?>
+    <?php if ($n) : ?>
+    <div id="toast"
+         class="fixed top-6 right-6 z-50 flex items-center gap-3 <?= $n['bg'] ?> text-white px-5 py-3.5 rounded-2xl shadow-xl text-sm font-semibold transition-all duration-500">
+        <span><?= $n['icon'] ?></span>
+        <span><?= $n['msg'] ?></span>
+        <button onclick="document.getElementById('toast').remove()" class="ml-2 text-white/70 hover:text-white text-lg leading-none">×</button>
+    </div>
+    <script>
+        setTimeout(function() {
+            const t = document.getElementById('toast');
+            if (t) { t.style.opacity = '0'; t.style.transform = 'translateY(-10px)'; setTimeout(() => t.remove(), 500); }
+        }, 3500);
+    </script>
+    <?php endif; ?>
+    <?php endif; ?>
+
     <!-- Top Bar -->
     <div class="bg-white px-6 py-4 rounded-2xl shadow-sm mb-6 flex items-center justify-between">
         <div>

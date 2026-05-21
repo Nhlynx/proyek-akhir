@@ -24,7 +24,8 @@ if (isset($_POST['submit'])) {
     }
 
     mysqli_query($conn, "UPDATE produk SET nama_produk='$nama', kategori='$kategori', deskripsi='$deskripsi', harga='$harga', stok='$stok', gambar='$gambar' WHERE id='$id'");
-    echo "<script> alert('Produk berhasil diupdate!'); window.location='produk.php'; </script>";
+    header("Location: produk.php?notif=edit");
+    exit;
 }
 ?>
 
