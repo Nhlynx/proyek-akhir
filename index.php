@@ -55,13 +55,13 @@ switch ($page) {
     case 'edukasi':
         if ($sub == 'narasumber') {
             $title = "Narasumber";
-            include 'pages/edukasi/narasumber.php';
+            include 'pages/rumah-edukasi/narasumber.php';
         } elseif ($sub == 'pelatihan') {
             $title = "Pelatihan";
-            include 'pages/edukasi/pelatihan.php';
+            include 'pages/rumah-edukasi/pelatihan.php';
         } else {
             $title = "Edukasi";
-            include 'pages/edukasi/index.php';
+            include 'pages/rumah-edukasi/index.php';
         }
         break;
 
