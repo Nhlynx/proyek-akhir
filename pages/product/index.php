@@ -57,7 +57,7 @@ while ($k = mysqli_fetch_assoc($kategoriQuery)) {
                          class="w-full h-full object-cover hover:scale-105 transition duration-500">
                 </div>
                 <!-- Info -->
-                <div class="p-8 md:p-10 flex flex-col justify-center">
+                <div class="p-5 md:p-10 flex flex-col justify-center">
                     <span class="inline-block bg-[#0f5c5c]/10 text-[#0f5c5c] text-xs font-semibold px-3 py-1 rounded-full mb-4 uppercase tracking-widest">
                         Produk Terbaru
                     </span>
@@ -127,7 +127,7 @@ while ($k = mysqli_fetch_assoc($kategoriQuery)) {
             </a>
         </div>
         <?php else : ?>
-        <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-5">
+        <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
             <?php foreach ($listData as $row) : ?>
             <div class="bg-white rounded-2xl shadow hover:shadow-lg transition overflow-hidden border border-gray-100 group">
                 <div class="overflow-hidden h-44">
@@ -160,7 +160,7 @@ while ($k = mysqli_fetch_assoc($kategoriQuery)) {
 
         <!-- Pagination -->
         <?php if ($totalPage > 1) : ?>
-        <div class="flex justify-center mt-10 gap-2">
+        <div class="flex flex-wrap justify-center mt-10 gap-2">
             <?php if ($page > 1) : ?>
             <a href="index.php?page=produk&halaman=<?= $page - 1 ?><?= $kategori ? '&kategori=' . urlencode($kategori) : '' ?>"
                class="px-4 py-2 rounded-xl border border-gray-200 bg-white text-gray-600 text-sm font-semibold hover:border-[#0f5c5c] hover:text-[#0f5c5c] transition">
@@ -193,7 +193,7 @@ while ($k = mysqli_fetch_assoc($kategoriQuery)) {
     <div class="max-w-6xl mx-auto px-6">
         <div class="grid md:grid-cols-2 gap-8 items-stretch">
             <!-- TRAINING -->
-            <div class="bg-[#0f5c5c] text-white p-8 rounded-2xl flex flex-col justify-between shadow-lg">
+            <div class="bg-[#0f5c5c] text-white p-6 md:p-8 rounded-2xl flex flex-col justify-between shadow-lg">
                 <div>
                     <span class="inline-block bg-white/20 text-white text-xs font-semibold px-3 py-1 rounded-full mb-5 tracking-widest uppercase">
                         Program Kami

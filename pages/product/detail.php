@@ -32,11 +32,11 @@ $link_wa = "https://wa.me/$no_wa?text=" . urlencode($pesan);
 <!-- DETAIL PRODUK -->
 <section class="py-14 bg-white">
     <div class="max-w-6xl mx-auto px-6">
-        <div class="grid md:grid-cols-2 gap-12 items-start">
+        <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
 
             <!-- GAMBAR -->
-            <div class="sticky top-24">
-                <div class="rounded-2xl overflow-hidden shadow-lg border border-gray-100 bg-gray-50 h-96">
+            <div class="md:sticky md:top-24">
+                <div class="rounded-2xl overflow-hidden shadow-lg border border-gray-100 bg-gray-50 h-72 md:h-96">
                     <img src="/proyek-akhir/uploads/<?= htmlspecialchars($produk['gambar']) ?>"
                          alt="<?= htmlspecialchars($produk['nama_produk']) ?>"
                          class="w-full h-full object-cover hover:scale-105 transition duration-500">
@@ -51,12 +51,12 @@ $link_wa = "https://wa.me/$no_wa?text=" . urlencode($pesan);
                 </span>
 
                 <!-- Nama Produk -->
-                <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4 leading-tight">
+                <h1 class="text-2xl md:text-4xl font-bold text-gray-800 mb-4 leading-tight">
                     <?= htmlspecialchars($produk['nama_produk']) ?>
                 </h1>
 
                 <!-- Harga -->
-                <div class="bg-gray-50 rounded-2xl px-6 py-4 mb-5 inline-block">
+                <div class="bg-gray-50 rounded-2xl px-4 md:px-6 py-4 mb-5 inline-block w-full md:w-auto">
                     <p class="text-xs text-gray-400 uppercase tracking-widest mb-1">Harga</p>
                     <p class="text-3xl font-bold text-[#0f5c5c]">
                         Rp<?= number_format($produk['harga'], 0, ',', '.') ?>
@@ -120,7 +120,7 @@ $link_wa = "https://wa.me/$no_wa?text=" . urlencode($pesan);
                 <p class="text-[#0f5c5c] text-sm font-semibold uppercase tracking-widest mb-1">Informasi Produk</p>
                 <h2 class="text-2xl font-bold text-gray-800">Deskripsi Produk</h2>
             </div>
-            <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100">
+            <div class="bg-gray-50 rounded-2xl p-5 md:p-8 border border-gray-100">
                 <p class="text-gray-600 leading-relaxed">
                     <?= nl2br(htmlspecialchars($produk['deskripsi'])) ?>
                 </p>
@@ -138,7 +138,7 @@ $link_wa = "https://wa.me/$no_wa?text=" . urlencode($pesan);
                     Lihat Semua →
                 </a>
             </div>
-            <div class="grid md:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 md:gap-6">
                 <?php while ($r = mysqli_fetch_assoc($related)) : ?>
                 <div class="bg-white rounded-2xl border border-gray-100 shadow hover:shadow-lg transition overflow-hidden group">
                     <div class="overflow-hidden h-44">
@@ -171,7 +171,7 @@ $link_wa = "https://wa.me/$no_wa?text=" . urlencode($pesan);
     <div class="max-w-6xl mx-auto px-6">
         <div class="grid md:grid-cols-2 gap-8 items-stretch">
             <!-- TRAINING -->
-            <div class="bg-[#0f5c5c] text-white p-8 rounded-2xl flex flex-col justify-between shadow-lg">
+            <div class="bg-[#0f5c5c] text-white p-6 md:p-8 rounded-2xl flex flex-col justify-between shadow-lg">
                 <div>
                     <span class="inline-block bg-white/20 text-white text-xs font-semibold px-3 py-1 rounded-full mb-5 tracking-widest uppercase">
                         Program Kami

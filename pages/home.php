@@ -30,7 +30,7 @@ $artikel = mysqli_query($conn, "SELECT * FROM artikel ORDER BY id DESC LIMIT 2")
         <div class="bg-[#0f5c5c] rounded-3xl overflow-hidden shadow-xl reveal">
             <div class="flex flex-col md:flex-row items-center gap-0">
                 <!-- Teks -->
-                <div class="flex-1 px-10 py-14 text-white">
+                <div class="flex-1 px-6 py-10 md:px-10 md:py-14 text-white">
                     <span class="inline-block bg-white/20 text-white text-xs font-semibold px-3 py-1 rounded-full mb-5 tracking-widest uppercase">
                         Rumah Pangan Nusantara
                     </span>
@@ -126,7 +126,7 @@ $artikel = mysqli_query($conn, "SELECT * FROM artikel ORDER BY id DESC LIMIT 2")
                 Lihat Semua →
             </a>
         </div>
-        <div class="grid md:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <?php while ($row = mysqli_fetch_assoc($produk)) : ?>
             <div class="bg-white rounded-2xl shadow hover:shadow-lg transition overflow-hidden border border-gray-100 group reveal">
                 <div class="overflow-hidden h-48">
@@ -165,18 +165,18 @@ $artikel = mysqli_query($conn, "SELECT * FROM artikel ORDER BY id DESC LIMIT 2")
                 <h2 class="text-2xl md:text-3xl font-bold text-gray-800">Artikel Terbaru</h2>
             </div>
         </div>
-        <div class="grid md:grid-cols-2 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <?php while ($row = mysqli_fetch_assoc($artikel)) : ?>
             <a href="index.php?page=detail_artikel&slug=<?= $row['slug']; ?>"
                class="bg-white rounded-2xl shadow hover:shadow-lg transition overflow-hidden flex gap-0 group border border-gray-100 reveal">
                 <!-- Gambar -->
-                <div class="w-36 flex-shrink-0 overflow-hidden">
+                <div class="w-28 md:w-36 flex-shrink-0 overflow-hidden">
                     <img src="/proyek-akhir/uploads/<?= htmlspecialchars($row['gambar']); ?>"
                          alt="<?= htmlspecialchars($row['judul']); ?>"
                          class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
                 </div>
                 <!-- Konten -->
-                <div class="p-5 flex flex-col justify-between">
+                <div class="p-4 md:p-5 flex flex-col justify-between">
                     <div>
                         <p class="text-xs text-gray-400 mb-1">
                             <?= date('d F Y', strtotime($row['created_at'])); ?> &bull; <?= htmlspecialchars($row['penulis']); ?>
@@ -201,7 +201,7 @@ $artikel = mysqli_query($conn, "SELECT * FROM artikel ORDER BY id DESC LIMIT 2")
     <div class="max-w-6xl mx-auto px-6">
         <div class="grid md:grid-cols-2 gap-8 items-stretch">
             <!-- TRAINING -->
-            <div class="bg-[#0f5c5c] text-white p-8 rounded-2xl flex flex-col justify-between shadow-lg reveal reveal-delay-1">
+            <div class="bg-[#0f5c5c] text-white p-6 md:p-8 rounded-2xl flex flex-col justify-between shadow-lg reveal reveal-delay-1">
                 <div>
                     <span class="inline-block bg-white/20 text-white text-xs font-semibold px-3 py-1 rounded-full mb-5 tracking-widest uppercase">
                         Program Kami

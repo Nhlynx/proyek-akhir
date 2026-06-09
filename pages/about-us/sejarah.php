@@ -46,7 +46,7 @@
                             <span class="inline-block bg-[#0f5c5c] text-white text-xs font-bold px-3 py-1 rounded-full mb-3">
                                 2021
                             </span>
-                            <p class="text-gray-600 text-sm leading-relaxed">
+                            <p class="text-gray-600 text-sm leading-relaxed text-left">
                                 Rumah Koro resmi memulai langkah dengan memproduksi tempe koro pedang secara mandiri di Bogor.
                                 Bahan baku kacang koro diperoleh dari petani di Jawa dan Lampung. Walau masih kecil, produk tempe koro pedang mulai dikenal
                                 masyarakat lewat komunitas pangan sehat dan beberapa pameran lokal.
@@ -83,7 +83,7 @@
                             <span class="inline-block bg-[#0f5c5c] text-white text-xs font-bold px-3 py-1 rounded-full mb-3">
                                 2023
                             </span>
-                            <p class="text-gray-600 text-sm leading-relaxed">
+                            <p class="text-gray-600 text-sm leading-relaxed text-left">
                                 Produksi tempe koro pedang meningkat signifikan hingga hampir 2 ton per tahun. Produk telah mengantongi sertifikat Halal
                                 serta diuji gizi di laboratorium. Rumah Koro aktif tampil dalam berbagai pameran pangan lokal, menjalin kerja sama dengan
                                 koperasi, komunitas UMKM, dan mulai menjajaki pemasaran di marketplace seperti Shopee, Tokopedia, dan TikTok Shop.

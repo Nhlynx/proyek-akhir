@@ -12,7 +12,7 @@
 <!-- DESKRIPSI -->
 <section class="py-14 bg-white">
     <div class="max-w-5xl mx-auto px-6">
-        <div class="bg-gray-50 border-l-4 border-[#0f5c5c] rounded-xl p-8 mb-14">
+        <div class="bg-gray-50 border-l-4 border-[#0f5c5c] rounded-xl p-5 md:p-8 mb-14">
             <p class="text-gray-700 leading-relaxed text-justify">
                 <span class="font-semibold text-[#0f5c5c]">Rumah Koro</span> hadir sebagai gerakan pangan lokal
                 yang berfokus pada pengembangan kacang koro pedang serta pemberdayaan masyarakat.
@@ -82,7 +82,7 @@
                 <h2 class="text-2xl md:text-3xl font-bold text-gray-800">Nilai yang Kami Bawa</h2>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-5">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
                 <div class="bg-[#0f5c5c] text-white rounded-2xl p-6 shadow-md">
                     <div class="text-3xl mb-4">🏛️</div>
                     <h3 class="font-bold text-lg mb-2">Kedaulatan Pangan</h3>
@@ -110,7 +110,7 @@
         </div>
 
         <!-- PENUTUP / QUOTE -->
-        <div class="bg-[#0f5c5c] rounded-2xl p-10 text-center shadow-lg">
+        <div class="bg-[#0f5c5c] rounded-2xl p-6 md:p-10 text-center shadow-lg">
             <p class="text-white/80 text-base leading-relaxed mb-4">
                 Kami mengajak teman-teman untuk bersama-sama mencintai pangan lokal, mendukung petani,
                 dan membangun masa depan pangan Indonesia yang lebih berdaulat.

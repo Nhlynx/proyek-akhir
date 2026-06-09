@@ -2,44 +2,44 @@
 $galeri = [
     [
         'gambar'  => '/proyek-akhir/assets/pelatihan-1.jpeg',
-        'judul'   => 'Pelatihan Pengolahan Koro Pedang',
-        'tanggal' => '12 Januari 2024',
+        'judul'   => 'Pelatihan Pengolahan Produk Koro Pedang',
+        'tanggal' => '25 Mei 2026',
         'lokasi'  => 'Bogor, Jawa Barat',
     ],
     [
         'gambar'  => '/proyek-akhir/assets/pelatihan-2.jpeg',
-        'judul'   => 'Workshop Inovasi Produk Pangan Lokal',
-        'tanggal' => '25 Maret 2024',
+        'judul'   => 'Pelatihan Pengolahan Produk Koro Pedang',
+        'tanggal' => '25 Mei 2026',
         'lokasi'  => 'Bogor, Jawa Barat',
     ],
     [
         'gambar'  => '/proyek-akhir/assets/pelatihan-3.jpeg',
-        'judul'   => 'Kunjungan Edukasi Budidaya Kacang Koro',
-        'tanggal' => '10 April 2024',
+        'judul'   => 'Pelatihan Pengolahan Produk Koro Pedang',
+        'tanggal' => '25 Mei 2026',
         'lokasi'  => 'Edu Wisata Kacang Koro, Bogor',
     ],
     [
         'gambar'  => '/proyek-akhir/assets/pelatihan-4.jpeg',
-        'judul'   => 'Pelatihan Pembuatan Kecap Koro Pedang',
-        'tanggal' => '7 Juni 2024',
+        'judul'   => 'Pelatihan Pengolahan Produk Koro Pedang',
+        'tanggal' => '25 Mei 2026',
         'lokasi'  => 'Bogor, Jawa Barat',
     ],
     [
         'gambar'  => '/proyek-akhir/assets/pelatihan-5.jpeg',
-        'judul'   => 'Pelatihan Produksi Keripik Tempe',
-        'tanggal' => '19 Agustus 2024',
+        'judul'   => 'Pelatihan Pengolahan Produk Koro Pedang',
+        'tanggal' => '25 Mei 2026',
         'lokasi'  => 'Bogor, Jawa Barat',
     ],
     [
         'gambar'  => '/proyek-akhir/assets/pelatihan-6.jpeg',
-        'judul'   => 'Pelatihan Pengolahan Tepung Koro Pedang',
-        'tanggal' => '3 Oktober 2024',
+        'judul'   => 'Pelatihan Pengolahan Produk Koro Pedang',
+        'tanggal' => '25 Mei 2026',
         'lokasi'  => 'Rumah Edukasi Koro, Bogor',
     ],
     [
         'gambar'  => '/proyek-akhir/assets/pelatihan-7.jpeg',
-        'judul'   => 'Seminar Ketahanan Pangan Lokal',
-        'tanggal' => '20 November 2024',
+        'judul'   => 'Pelatihan Pengolahan Produk Koro Pedang',
+        'tanggal' => '25 Mei 2026',
         'lokasi'  => 'Bogor, Jawa Barat',
     ],
 ];
@@ -58,7 +58,7 @@ $galeri = [
 
 <!-- STATS BAR -->
 <section class="bg-white border-b border-gray-100">
-    <div class="max-w-6xl mx-auto px-6 py-5 flex items-center gap-8 flex-wrap">
+    <div class="max-w-6xl mx-auto px-6 py-5 flex items-center gap-6 md:gap-8 flex-wrap">
         <div class="flex items-center gap-2">
             <span class="text-2xl font-bold text-[#0f5c5c]"><?= count($galeri) ?></span>
             <span class="text-sm text-gray-500">Kegiatan Terdokumentasi</span>
@@ -85,7 +85,7 @@ $galeri = [
             <h2 class="text-2xl md:text-3xl font-bold text-gray-800">Foto Kegiatan</h2>
         </div>
 
-        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 md:gap-6">
             <?php foreach ($galeri as $i => $item) : ?>
             <div class="bg-white rounded-2xl overflow-hidden shadow hover:shadow-lg transition group cursor-pointer border border-gray-100"
                  onclick="openLightbox(<?= $i ?>)">
@@ -118,21 +118,21 @@ $galeri = [
 </section>
 
 <!-- LIGHTBOX -->
-<div id="lightbox" class="fixed inset-0 bg-black/80 z-50 hidden items-center justify-center p-4"
+<div id="lightbox" class="fixed inset-0 bg-black/80 z-50 hidden items-center justify-center p-3 md:p-4"
      onclick="closeLightbox(event)">
     <div class="relative max-w-3xl w-full" onclick="event.stopPropagation()">
         <!-- Tombol Tutup -->
         <button onclick="closeLightbox()"
-                class="absolute -top-10 right-0 text-white/70 hover:text-white text-3xl leading-none transition">
+                class="absolute -top-9 right-0 text-white/70 hover:text-white text-3xl leading-none transition">
             ×
         </button>
         <!-- Gambar -->
         <div class="bg-white rounded-2xl overflow-hidden shadow-2xl">
             <img id="lightboxImg" src="" alt=""
-                 class="w-full max-h-[60vh] object-contain bg-gray-900">
-            <div class="p-5 flex items-start justify-between gap-4">
-                <div>
-                    <h3 id="lightboxJudul" class="font-bold text-gray-800 text-base mb-1"></h3>
+                 class="w-full max-h-[50vh] md:max-h-[60vh] object-contain bg-gray-900">
+            <div class="p-4 md:p-5 flex items-start justify-between gap-4">
+                <div class="min-w-0">
+                    <h3 id="lightboxJudul" class="font-bold text-gray-800 text-sm md:text-base mb-1 truncate"></h3>
                     <p id="lightboxTanggal" class="text-xs text-gray-400 flex items-center gap-1">📅 </p>
                     <p id="lightboxLokasi"  class="text-xs text-gray-400 flex items-center gap-1 mt-0.5">📍 </p>
                 </div>
@@ -157,7 +157,7 @@ $galeri = [
 <section class="py-14 bg-white">
     <div class="max-w-6xl mx-auto px-6">
         <div class="grid md:grid-cols-2 gap-8 items-stretch">
-            <div class="bg-[#0f5c5c] text-white p-8 rounded-2xl flex flex-col justify-between shadow-lg">
+            <div class="bg-[#0f5c5c] text-white p-6 md:p-8 rounded-2xl flex flex-col justify-between shadow-lg">
                 <div>
                     <span class="inline-block bg-white/20 text-white text-xs font-semibold px-3 py-1 rounded-full mb-5 tracking-widest uppercase">
                         Program Kami

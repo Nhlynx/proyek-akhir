@@ -19,9 +19,9 @@
                 <p class="text-[#0f5c5c] text-sm font-semibold uppercase tracking-widest mb-1">Tujuan Besar Kami</p>
                 <h2 class="text-2xl md:text-3xl font-bold text-gray-800">Visi</h2>
             </div>
-            <div class="bg-[#0f5c5c] rounded-2xl p-10 shadow-lg text-center">
+            <div class="bg-[#0f5c5c] rounded-2xl p-6 md:p-10 shadow-lg text-center">
                 <div class="text-5xl mb-5">🌿</div>
-                <p class="text-white text-lg leading-relaxed max-w-3xl mx-auto">
+                <p class="text-white text-base md:text-lg leading-relaxed max-w-3xl mx-auto">
                     Mewujudkan kedaulatan pangan Indonesia melalui pengembangan pangan lokal yang sehat, berkelanjutan, dan memberdayakan masyarakat, dengan kacang koro pedang sebagai salah satu komponen utamanya.
                 </p>
             </div>
@@ -72,7 +72,7 @@
                     </p>
                 </div>
 
-                <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md transition flex gap-5 items-start md:col-span-2">
+                <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md transition flex gap-5 items-start col-span-1 md:col-span-2">
                     <div class="w-10 h-10 min-w-[40px] bg-[#0f5c5c] text-white flex items-center justify-center rounded-full font-bold text-sm shadow">
                         5
                     </div>
