@@ -38,67 +38,76 @@ $queryKategori = mysqli_query($conn, "SELECT kategori, COUNT(*) as jumlah FROM p
 <main class="flex-1 p-6 overflow-y-auto">
 
     <!-- Top Bar -->
-    <div class="bg-white px-6 py-4 rounded-2xl shadow-sm mb-6 flex items-center justify-between">
-        <div>
-            <h2 class="font-bold text-gray-800 text-lg">Dashboard</h2>
-            <p class="text-gray-400 text-xs mt-0.5"><?= date('l, d F Y') ?></p>
-        </div>
+    <div class="bg-white px-4 md:px-6 py-4 rounded-2xl shadow-sm mb-6 flex items-center justify-between">
         <div class="flex items-center gap-3">
-            <div class="text-right">
+            <!-- Hamburger mobile -->
+            <button onclick="toggleSidebar()"
+                    class="md:hidden w-9 h-9 flex items-center justify-center rounded-xl bg-gray-100 hover:bg-gray-200 transition text-gray-600">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+            <div>
+                <h2 class="font-bold text-gray-800 text-lg">Dashboard</h2>
+                <p class="text-gray-400 text-xs mt-0.5"><?= date('l, d F Y') ?></p>
+            </div>
+        </div>
+        <div class="flex items-center gap-2 md:gap-3">
+            <div class="text-right hidden sm:block">
                 <p class="text-sm font-semibold text-gray-700">Admin</p>
                 <p class="text-xs text-gray-400">Rumah Pangan Nusantara</p>
             </div>
-            <div class="w-9 h-9 bg-[#0f5c5c] rounded-full flex items-center justify-center text-white font-bold text-sm">
+            <div class="w-9 h-9 bg-[#0f5c5c] rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
                 A
             </div>
         </div>
     </div>
 
     <!-- Stat Cards -->
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-5 mb-6">
-        <div class="bg-[#0f5c5c] text-white p-5 rounded-2xl shadow hover:shadow-lg transition">
-            <div class="flex items-center justify-between mb-3">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-5 mb-6">
+        <div class="bg-[#0f5c5c] text-white p-4 md:p-5 rounded-2xl shadow hover:shadow-lg transition">
+            <div class="flex items-center justify-between mb-2 md:mb-3">
                 <p class="text-xs font-semibold uppercase tracking-widest text-white/70">Total Produk</p>
-                <span class="text-2xl">📦</span>
+                <span class="text-xl md:text-2xl">📦</span>
             </div>
-            <p class="text-4xl font-bold"><?= $totalProduk ?></p>
+            <p class="text-3xl md:text-4xl font-bold"><?= $totalProduk ?></p>
             <a href="/proyek-akhir/admin/produk/produk.php" class="text-white/60 text-xs mt-2 inline-block hover:text-white transition">
-                Kelola Produk →
+                Kelola →
             </a>
         </div>
 
-        <div class="bg-white border border-gray-100 p-5 rounded-2xl shadow hover:shadow-lg transition">
-            <div class="flex items-center justify-between mb-3">
-                <p class="text-xs font-semibold uppercase tracking-widest text-gray-400">Total Artikel</p>
-                <span class="text-2xl">📝</span>
+        <div class="bg-white border border-gray-100 p-4 md:p-5 rounded-2xl shadow hover:shadow-lg transition">
+            <div class="flex items-center justify-between mb-2 md:mb-3">
+                <p class="text-xs font-semibold uppercase tracking-widest text-gray-400">Artikel</p>
+                <span class="text-xl md:text-2xl">📝</span>
             </div>
-            <p class="text-4xl font-bold text-gray-800"><?= $totalArtikel ?></p>
+            <p class="text-3xl md:text-4xl font-bold text-gray-800"><?= $totalArtikel ?></p>
             <a href="/proyek-akhir/admin/artikel/artikel.php" class="text-[#0f5c5c] text-xs mt-2 inline-block hover:underline transition">
-                Kelola Artikel →
+                Kelola →
             </a>
         </div>
 
-        <div class="bg-white border border-gray-100 p-5 rounded-2xl shadow hover:shadow-lg transition">
-            <div class="flex items-center justify-between mb-3">
-                <p class="text-xs font-semibold uppercase tracking-widest text-gray-400">Total Konten</p>
-                <span class="text-2xl">🗂️</span>
+        <div class="bg-white border border-gray-100 p-4 md:p-5 rounded-2xl shadow hover:shadow-lg transition">
+            <div class="flex items-center justify-between mb-2 md:mb-3">
+                <p class="text-xs font-semibold uppercase tracking-widest text-gray-400">Konten</p>
+                <span class="text-xl md:text-2xl">🗂️</span>
             </div>
-            <p class="text-4xl font-bold text-gray-800"><?= $totalKonten ?></p>
+            <p class="text-3xl md:text-4xl font-bold text-gray-800"><?= $totalKonten ?></p>
             <p class="text-gray-400 text-xs mt-2">Produk + Artikel</p>
         </div>
 
-        <div class="bg-white border border-gray-100 p-5 rounded-2xl shadow hover:shadow-lg transition">
-            <div class="flex items-center justify-between mb-3">
-                <p class="text-xs font-semibold uppercase tracking-widest text-gray-400">Total Stok</p>
-                <span class="text-2xl">🏷️</span>
+        <div class="bg-white border border-gray-100 p-4 md:p-5 rounded-2xl shadow hover:shadow-lg transition">
+            <div class="flex items-center justify-between mb-2 md:mb-3">
+                <p class="text-xs font-semibold uppercase tracking-widest text-gray-400">Stok</p>
+                <span class="text-xl md:text-2xl">🏷️</span>
             </div>
-            <p class="text-4xl font-bold text-gray-800"><?= number_format($totalStok) ?></p>
+            <p class="text-3xl md:text-4xl font-bold text-gray-800"><?= number_format($totalStok) ?></p>
             <p class="text-gray-400 text-xs mt-2">Unit tersedia</p>
         </div>
     </div>
 
     <!-- Row 2: Produk Terbaru + Stok Rendah -->
-    <div class="grid md:grid-cols-2 gap-5 mb-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
 
         <!-- Produk Terbaru -->
         <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
@@ -170,7 +179,7 @@ $queryKategori = mysqli_query($conn, "SELECT kategori, COUNT(*) as jumlah FROM p
     </div>
 
     <!-- Row 3: Artikel Terbaru + Kategori Produk -->
-    <div class="grid md:grid-cols-2 gap-5">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
 
         <!-- Artikel Terbaru -->
         <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
@@ -219,23 +228,23 @@ $queryKategori = mysqli_query($conn, "SELECT kategori, COUNT(*) as jumlah FROM p
     </div>
 
     <!-- Quick Actions -->
-    <div class="mt-6 bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+    <div class="mt-6 bg-white rounded-2xl shadow-sm border border-gray-100 p-4 md:p-6">
         <h3 class="font-bold text-gray-800 text-sm mb-4">Aksi Cepat</h3>
-        <div class="flex flex-wrap gap-3">
+        <div class="grid grid-cols-2 md:flex md:flex-wrap gap-3">
             <a href="/proyek-akhir/admin/produk/tambah_produk.php"
-               class="inline-flex items-center gap-2 bg-[#0f5c5c] text-white px-5 py-2.5 rounded-xl text-sm font-semibold hover:bg-[#0a4444] transition">
+               class="inline-flex items-center justify-center gap-2 bg-[#0f5c5c] text-white px-4 py-2.5 rounded-xl text-sm font-semibold hover:bg-[#0a4444] transition">
                 + Tambah Produk
             </a>
             <a href="/proyek-akhir/admin/artikel/tambah_artikel.php"
-               class="inline-flex items-center gap-2 bg-white border border-[#0f5c5c] text-[#0f5c5c] px-5 py-2.5 rounded-xl text-sm font-semibold hover:bg-[#0f5c5c] hover:text-white transition">
+               class="inline-flex items-center justify-center gap-2 bg-white border border-[#0f5c5c] text-[#0f5c5c] px-4 py-2.5 rounded-xl text-sm font-semibold hover:bg-[#0f5c5c] hover:text-white transition">
                 + Tambah Artikel
             </a>
             <a href="/proyek-akhir/admin/produk/produk.php"
-               class="inline-flex items-center gap-2 bg-white border border-gray-200 text-gray-600 px-5 py-2.5 rounded-xl text-sm font-semibold hover:border-[#0f5c5c] hover:text-[#0f5c5c] transition">
+               class="inline-flex items-center justify-center gap-2 bg-white border border-gray-200 text-gray-600 px-4 py-2.5 rounded-xl text-sm font-semibold hover:border-[#0f5c5c] hover:text-[#0f5c5c] transition">
                 📦 Kelola Produk
             </a>
             <a href="/proyek-akhir/admin/artikel/artikel.php"
-               class="inline-flex items-center gap-2 bg-white border border-gray-200 text-gray-600 px-5 py-2.5 rounded-xl text-sm font-semibold hover:border-[#0f5c5c] hover:text-[#0f5c5c] transition">
+               class="inline-flex items-center justify-center gap-2 bg-white border border-gray-200 text-gray-600 px-4 py-2.5 rounded-xl text-sm font-semibold hover:border-[#0f5c5c] hover:text-[#0f5c5c] transition">
                 📝 Kelola Artikel
             </a>
         </div>

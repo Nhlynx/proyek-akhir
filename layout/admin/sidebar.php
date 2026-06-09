@@ -1,7 +1,17 @@
-<aside class="w-64 bg-[#0f5c5c] text-white flex flex-col min-h-screen">
+<!-- Overlay Mobile -->
+<div id="sidebarOverlay"
+     class="fixed inset-0 bg-black/50 z-30 hidden md:hidden"
+     onclick="toggleSidebar()"></div>
+
+<!-- Sidebar -->
+<aside id="sidebar"
+       class="fixed md:relative z-40 md:z-auto
+              -translate-x-full md:translate-x-0
+              transition-transform duration-300
+              w-64 bg-[#0f5c5c] text-white flex flex-col min-h-screen">
 
     <!-- Logo / Brand -->
-    <div class="px-6 py-6 border-b border-white/10">
+    <div class="px-6 py-6 border-b border-white/10 flex items-center justify-between">
         <div class="flex items-center gap-3">
             <div class="w-9 h-9 bg-white/20 rounded-xl flex items-center justify-center font-bold text-white text-sm flex-shrink-0">
                 RK
@@ -11,6 +21,8 @@
                 <p class="text-white/50 text-xs">Admin Panel</p>
             </div>
         </div>
+        <!-- Tombol tutup (mobile only) -->
+        <button onclick="toggleSidebar()" class="md:hidden text-white/60 hover:text-white text-xl leading-none">×</button>
     </div>
 
     <!-- Navigasi -->
@@ -41,7 +53,6 @@
 
         <div class="pt-4">
             <p class="text-white/40 text-xs font-semibold uppercase tracking-widest px-3 mb-3">Lainnya</p>
-
             <a href="/proyek-akhir/index.php" target="_blank"
                class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-white/70 hover:bg-white/10 hover:text-white transition">
                 <span class="text-base">🌐</span>
@@ -61,3 +72,19 @@
     </div>
 
 </aside>
+
+<script>
+function toggleSidebar() {
+    const sidebar  = document.getElementById('sidebar');
+    const overlay  = document.getElementById('sidebarOverlay');
+    const isOpen   = !sidebar.classList.contains('-translate-x-full');
+
+    if (isOpen) {
+        sidebar.classList.add('-translate-x-full');
+        overlay.classList.add('hidden');
+    } else {
+        sidebar.classList.remove('-translate-x-full');
+        overlay.classList.remove('hidden');
+    }
+}
+</script>
