@@ -54,11 +54,11 @@ $queryKategori = mysqli_query($conn, "SELECT kategori, COUNT(*) as jumlah FROM p
         </div>
         <div class="flex items-center gap-2 md:gap-3">
             <div class="text-right hidden sm:block">
-                <p class="text-sm font-semibold text-gray-700">Admin</p>
+                <p class="text-sm font-semibold text-gray-700"><?= htmlspecialchars(ucfirst($_SESSION['user']['username'])) ?></p>
                 <p class="text-xs text-gray-400">Rumah Pangan Nusantara</p>
             </div>
             <div class="w-9 h-9 bg-[#0f5c5c] rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
-                A
+                <?= strtoupper(substr($_SESSION['user']['username'], 0, 1)) ?>
             </div>
         </div>
     </div>

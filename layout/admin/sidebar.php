@@ -51,8 +51,21 @@
             Artikel
         </a>
 
+        <a href="/proyek-akhir/admin/users/users.php"
+           class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition
+                  <?= in_array(basename($_SERVER['PHP_SELF']), ['users.php', 'tambah_user.php', 'edit_user.php']) ? 'bg-white/20 text-white' : 'text-white/70 hover:bg-white/10 hover:text-white' ?>">
+            <span class="text-base">👥</span>
+            Kelola Admin
+        </a>
+
         <div class="pt-4">
             <p class="text-white/40 text-xs font-semibold uppercase tracking-widest px-3 mb-3">Lainnya</p>
+            <a href="/proyek-akhir/admin/ubah_password.php"
+               class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition mb-1
+                      <?= basename($_SERVER['PHP_SELF']) == 'ubah_password.php' ? 'bg-white/20 text-white' : 'text-white/70 hover:bg-white/10 hover:text-white' ?>">
+                <span class="text-base">🔑</span>
+                Ubah Password
+            </a>
             <a href="/proyek-akhir/index.php" target="_blank"
                class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-white/70 hover:bg-white/10 hover:text-white transition">
                 <span class="text-base">🌐</span>
